@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tải file mod</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 80px;
+    }
+    #downloadBtn {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: none;
+    }
+    #downloadBtn:hover {
+      background-color: #45a049;
+    }
+    #message {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Trang tải file</h2>
+  <p id="message">Đang kiểm tra nguồn truy cập...</p>
+  <button id="downloadBtn" onclick="downloadFile()">Tải file</button>
+
+  <script>
+    // Lấy tham số từ URL: ?file=ID
+    const params = new URLSearchParams(window.location.search);
+    const fileId = params.get("file");
+
+    const ref = document.referrer.toLowerCase();
+    const ua = navigator.userAgent.toLowerCase();
+    const message = document.getElementById("message");
+    const button = document.getElementById("downloadBtn");
+
+    if (!fileId) {
+      message.textContent = "Thiếu ID file trong đường dẫn (?file=...)";
+    } else {
+      // Kiểm tra nguồn truy cập
+      let source = "khác";
+      if (ref.includes("discord") || ua.includes("discord")) source = "Discord";
+      else if (ref.includes("zalo") || ua.includes("zalo")) source = "Zalo";
+      else if (ref.includes("facebook") || ua.includes("fb")) source = "Facebook";
+
+      message.textContent = `Bạn đang truy cập từ ${source}. Nhấn nút bên dưới để tải file.`;
+      button.style.display = "inline-block";
+    }
+
+    // Hàm tải file từ Google Drive
+    function downloadFile() {
+      const link = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      const a = document.createElement("a");
+      a.href = link;
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+</body>
+</html>
