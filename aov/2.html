@@ -8,9 +8,20 @@
   <style>
     body {margin: 0; height: 100vh; position: relative; overflow: hidden; font-family: 'Oswald', sans-serif, bold;}
     body::before {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('image/datallain.jpg'); background-size: cover; background-position: center; filter: blur(8px); z-index: -1;}
-    body::after {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: 0;}.profile {position: absolute; top: 20px; left: 20px; text-align: center; display: flex; align-items: center; color: #ffffff; z-index: 1;}.profile img {width: 50px; height: 50px; border-radius: 50%; margin-right: 7px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);}.profile h1 {font-size: 17px; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);}.modal {position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 600px; background-color: rgba(0, 0, 0, 0.4); color: white; padding: 20px; border-radius: 10px; z-index: 1; text-align: center;}.modal h2 {font-size: 45px; margin-bottom: 20px; color: #FFE200; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); cursor: pointer;}.modal h2:hover {text-decoration: underline;}.modal p {font-size: 18px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);}
+    body::after {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.25); z-index: 0;}
+    .profile {position: absolute; top: 20px; left: 20px; text-align: center; display: flex; align-items: center; color: #ffffff; z-index: 1;}
+    .profile img {width: 50px; height: 50px; border-radius: 50%; margin-right: 7px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);}
+    .profile h1 {font-size: 17px; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);}
+    .modal {position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 600px; background-color: rgba(0, 0, 0, 0.4); color: white; padding: 20px; border-radius: 10px; z-index: 1; text-align: center;}
+    .modal h2 {font-size: 45px; margin-bottom: 20px; color: #FFE200; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); cursor: pointer;}
+    .modal h2:hover {text-decoration: underline;}
+    .modal p {font-size: 18px; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);}
     cc {font-size: 18px; color: #17e1e1;}
-    luu_y {font-size: 18px; color: #ff0000;}.btn-pill {position: fixed; top: 120%; left: 50%; transform: translate(-50%, -50%); display: inline-block; padding: 12px 40px; font-size: 16px; background-color: rgba(0, 0, 0, 0.4); color: white; border: 3px solid #16b0b0; border-radius: 30px; text-align: center; text-decoration: none;}.copied {margin-top: 10px; color: #00ffcc; font-size: 16px; display: none;}.copyright {position: fixed; top: 97%; left: 50%; transform: translate(-50%, -50%); font-size: 18px; color: white;}.blocked {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000ee; color: red; font-size: 22px; display: flex; align-items: center; justify-content: center; z-index: 9999; text-align: center; padding: 30px;}
+    luu_y {font-size: 18px; color: #ff0000;}
+    .btn-pill {position: fixed; top: 120%; left: 50%; transform: translate(-50%, -50%); display: inline-block; padding: 12px 40px; font-size: 16px; background-color: rgba(0, 0, 0, 0.4); color: white; border: 3px solid #16b0b0; border-radius: 30px; text-align: center; text-decoration: none;}
+    .copied {margin-top: 10px; color: #00ffcc; font-size: 16px; display: none;}
+    .copyright {position: fixed; top: 97%; left: 50%; transform: translate(-50%, -50%); font-size: 18px; color: white;}
+    .blocked {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000ee; color: red; font-size: 22px; display: flex; align-items: center; justify-content: center; z-index: 9999; text-align: center; padding: 30px;}
   </style>
 </head>
 <body>
@@ -32,7 +43,11 @@
     Bạn đang sử dụng VPN hoặc proxy.<br>Vui lòng tắt VPN rồi tải lại trang
   </div>
   <script>
-    const params=new URLSearchParams(window.location.search),key=params.get("key")||"Không có key",keyElem=document.getElementById("key-here");keyElem.textContent=key;function copyKey(){navigator.clipboard.writeText(key).then(()=>{const msg=document.getElementById("copied-msg");msg.style.display="block";setTimeout(()=>msg.style.display="none",2e3);});}function copyThenGo(){navigator.clipboard.writeText(key).then(()=>{window.location.href="https://t.me/DatAllain_bot";});}if(window.location.search.includes("key=")){const newURL=window.location.origin+window.location.pathname;window.history.replaceState({},document.title,newURL);}fetch("https://ipinfo.io/json?token=b13efcc9831a5c").then(res=>res.json()).then(data=>{/vpn|proxy|digitalocean|ovh|linode|contabo|server/i.test(data.org||"")||/vpn|proxy/i.test(data.hostname||"")?(document.getElementById("vpn-block").style.display="flex",document.querySelector(".modal").style.display="none",document.body.style.overflow="hidden"):null;}).catch(err=>console.error("Lỗi kiểm tra VPN:",err));
+    const params=new URLSearchParams(window.location.search),key=params.get("key")||"Không có key",keyElem=document.getElementById("key-here");keyElem.textContent=key;
+    function copyKey(){navigator.clipboard.writeText(key).then(()=>{const msg=document.getElementById("copied-msg");msg.style.display="block";setTimeout(()=>msg.style.display="none",2000);});}
+    function copyThenGo(){navigator.clipboard.writeText(key).then(()=>{window.location.href="https://t.me/DatAllain_bot";});}
+    if(window.location.search.includes("key=")){const newURL=window.location.origin+window.location.pathname;window.history.replaceState({},document.title,newURL);}
+    fetch("https://ipinfo.io/json?token=b13efcc9831a5c").then(res=>res.json()).then(data=>{/vpn|proxy|digitalocean|ovh|linode|contabo|server/i.test(data.org||"")||/vpn|proxy/i.test(data.hostname||"")?(document.getElementById("vpn-block").style.display="flex",document.querySelector(".modal").style.display="none",document.body.style.overflow="hidden",document.getElementById("key-here").textContent=""):null;}).catch(err=>console.error("Lỗi kiểm tra VPN:",err));
   </script>
 </body>
 </html>
