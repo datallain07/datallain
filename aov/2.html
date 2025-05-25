@@ -31,21 +31,21 @@
   </div>
   <div class="modal">
     <key>Key của bạn là</key>
-    <b><h2 id="key-here" onclick="copyKey()">Loading...</h2></b>
+    <b><h2 id="key-here" onclick="copyKey()">Đang kiểm tra...</h2></b>
     <div class="copied" id="copied-msg">Đã sao chép!</div>
     <p>Ấn vào <cc>NHẬP KEY</cc> để thực hiện xác minh key. Key hợp lệ bot sẽ gửi mod cho bạn<br><luu_y>Lưu ý: Bạn chỉ có 3 lần nhập key, nếu bạn nhập sai cần lấy link mới và vượt lại từ đầu</luu_y></p>
     <a href="#" class="btn-pill" onclick="copyThenGo()"><b><cc>NHẬP KEY</cc></b></a>
   </div>
-  <div class="copyright">© copyright datallain</div>
+  <div class="copyright">
+    © copyright datallain
+  </div>
   <div id="vpn-block" class="blocked" style="display: none;">
     Bạn đang sử dụng VPN hoặc proxy.<br>Vui lòng tắt VPN rồi tải lại trang
   </div>
-
   <script>
     const params = new URLSearchParams(window.location.search);
     const key = params.get("key") || "Không có key";
     const keyElem = document.getElementById("key-here");
-    keyElem.textContent = key;
 
     function copyKey() {
       navigator.clipboard.writeText(key).then(() => {
@@ -66,22 +66,23 @@
       window.history.replaceState({}, document.title, newURL);
     }
 
-    // CHẶN VPN HOÀN TOÀN
     fetch("https://ipinfo.io/json?token=b13efcc9831a5c")
       .then(res => res.json())
       .then(data => {
-        const org = (data.org || "").toLowerCase();
-        const hostname = (data.hostname || "").toLowerCase();
-        const keywords = ["vpn", "proxy", "digitalocean", "ovh", "linode", "contabo", "server"];
-        const isVPN = keywords.some(k => org.includes(k) || hostname.includes(k));
+        const isVPN = /vpn|proxy|digitalocean|ovh|linode|contabo|server/i.test(data.org || "") ||
+                      /vpn|proxy/i.test(data.hostname || "");
         if (isVPN) {
           document.getElementById("vpn-block").style.display = "flex";
           document.querySelector(".modal").style.display = "none";
           document.body.style.overflow = "hidden";
-          document.getElementById("key-here").textContent = "";
+        } else {
+          keyElem.textContent = key;
         }
       })
-      .catch(err => console.error("Lỗi kiểm tra VPN:", err));
+      .catch(err => {
+        console.error("Lỗi kiểm tra VPN:", err);
+        keyElem.textContent = "Không thể xác minh mạng!";
+      });
   </script>
 </body>
 </html>
