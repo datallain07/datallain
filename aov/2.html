@@ -32,10 +32,7 @@
     Bạn đang sử dụng VPN hoặc proxy.<br>Vui lòng tắt VPN rồi tải lại trang
   </div>
   <script>
-    const params = new URLSearchParams(window.location.search); const key = params.get("key") || "Không có key"; const keyElem = document.getElementById("key-here"); keyElem.textContent = key; function copyKey() {navigator.clipboard.writeText(key).then(() => {const msg = document.getElementById("copied-msg"); msg.style.display = "block"; setTimeout(() => msg.style.display = "none", 2000);});}
-    function copyThenGo() {navigator.clipboard.writeText(key).then(() => {window.location.href = "https://t.me/DatAllain_bot";});}
-    if (window.location.search.includes("key=")) {const newURL = window.location.origin + window.location.pathname; window.history.replaceState({}, document.title, newURL);}
-    fetch('https://ipapi.co/json/').then(response => response.json()).then(data => {if (data.security && (data.security.vpn || data.security.proxy)) {document.getElementById("vpn-block").style.display = "flex"; document.body.style.overflow = "hidden";}}).catch(error => {console.error("Lỗi kiểm tra VPN:", error);});
+  const params=new URLSearchParams(window.location.search);const key=params.get("key")||"Không có key";const keyElem=document.getElementById("key-here");keyElem.textContent=key;function copyKey(){navigator.clipboard.writeText(key).then(()=>{const msg=document.getElementById("copied-msg");msg.style.display="block";setTimeout(()=>msg.style.display="none",2e3);});}function copyThenGo(){navigator.clipboard.writeText(key).then(()=>{window.location.href="https://t.me/DatAllain_bot";});}if(window.location.search.includes("key=")){const newURL=window.location.origin+window.location.pathname;window.history.replaceState({},document.title,newURL);}fetch("https://ipapi.co/json/").then(res=>res.json()).then(data=>{if(data.security&&(data.security.vpn||data.security.proxy)){document.getElementById("vpn-block").style.display="flex";document.querySelector(".modal").style.display="none";document.body.style.overflow="hidden";}}).catch(err=>console.error("Lỗi kiểm tra VPN:",err));
   </script>
 </body>
 </html>
