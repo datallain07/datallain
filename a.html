@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAT ALLAIN PAGES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {-webkit-tap-highlight-color: transparent;outline: none;}
+    body {
+      margin: 0;
+      font-family: "Arial", sans-serif;
+      color: white;
+      background: #000;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .hero {
+      background: url("img/datallain.png") center/cover no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      transition: opacity 0.8s ease-in-out;
+      filter: blur(8px);
+      pointer-events: none;
+    }
+    .overlay {
+      position: relative;
+      z-index: 2;
+      padding: 30px 20px 100px;
+      background: rgba(0, 0, 0, 0.4);
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    .header h1, .header h2, .main-subtitle {
+      font-family: 'Oswald', sans-serif;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+      margin: 0;
+      margin-top: -30px;
+      margin-left: -10px
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .header h2 {
+      font-size: 18px;
+      margin-top: -7px;
+    }
+    .main-subtitle {
+      font-size: 18px;
+      font-weight: normal;
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+    .mod-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      overflow: hidden;
+      height: 60px;
+      max-width: 350px;
+      margin: 20px auto;
+      border: 2px solid;
+      cursor: pointer;
+    }
+    .mod-card img.bg {
+      width: 100%;
+      display: block;
+      l
+    }
+    .mod-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 75px 10px 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-sizing: border-box;
+    }
+    .mod-mini {
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      border: 2px solid;
+      box-sizing: border-box;
+    }
+    .mod-texts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: inherit;
+    }
+    .mod-title {
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      margin: 0;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .mod-desc {
+      font-size: 10px;
+      color: #fff;
+      margin-top: -2px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .mod-champion-note {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: -2px;
+    }
+    .label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #00ffd0;
+      color: black;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .download-container {
+      position: absolute;
+      bottom: 11px;
+      right: 7px;
+      z-index: 50;
+    }
+    .download-btn-main {
+      color: #000 !important;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: all 1s ease;
+      white-space: nowrap;
+      display: inline-block;
+      opacity: 1;
+    }
+    .credit {
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+  z-index: 100;
+  font-size: 12px;
+  color: #ccc;
+  text-align: left;
+}
+  </style>
+</head>
+<body>
+  <div id="bg" class="hero"></div>
+  <div id="bg-next" class="hero" style="opacity: 0;"></div>
+  <div class="overlay">
+    <div class="header">
+      <h1>DAT ALLAIN PAGES</h1>
+      <h2>Trang web mod skin AOV</h2>
+      <h3 class="main-subtitle">CÁC BẢN MOD HIỆN CÓ</h3>
+    </div>
+    <div id="skin-list"></div>
+    <div class="credit">Lưu ý: Đây là trang web bịp🗿</div>
+  </div>
+
+  <script>
+    const skins = [
+      {
+        champion: "Allain",
+        name: "FIREFLY",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/firefly.png",
+        miniImg: "img/firefly_mini.png",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(60, 255, 193)",
+        borderColor: "rgba(60, 255, 193, 0.6)",
+      },
+      {
+        champion: "Allain",
+        name: "LẠC TUYẾT BẠCH LANG",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/ltbl.png",
+        miniImg: "img/ltbl_mini.png",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(155, 255, 255)",
+        borderColor: "rgba(155, 255, 255, 0.3)",
+      },
+      {
+        champion: "Nakroth",
+        name: "Xiao",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/xiao.png",
+        miniImg: "img/xiao_mini.png",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(61, 245, 255)",
+        borderColor: "rgba(61, 245, 255, 0.5)",
+      },
+      {
+        champion: "Florentino",
+        name: "Furina",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/furina.png",
+        miniImg: "img/furina_mini.png",
+        desc: "Effects - Sound - Button",
+        textColor: "rgb(0, 176, 255)",
+        borderColor: "rgba(0, 176, 255, 0.5)",
+      },
+      {
+        champion: "PACK",
+        name: "4 SKINS UNDERWORLD",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/underworld.png",
+        miniImg: "img/pack_mini.png",
+        desc: "Effects - Sound - Button",
+        textColor: "rgb(244, 180, 70)",
+        borderColor: "rgba(244, 180, , 0.5)",
+      },
+      
+    ];
+
+    const skinList = document.getElementById("skin-list");
+
+    skins.forEach((skin) => {
+      const labelHTML = skin.label
+        ? `<span class="label" style="background-color: ${skin.textColor}">${skin.label}</span>`
+        : "";
+
+      const miniImgHTML = skin.miniImg
+        ? `<img src="${skin.miniImg}" class="mod-mini" style="border-color: ${skin.borderColor}" />`
+        : "";
+
+      const championNoteHTML = skin.champion && skin.miniImg
+        ? `<div class="mod-champion-note">${skin.champion}</div>`
+        : "";
+
+      const titleHTML = skin.name
+        ? `<div class="mod-title" style="background: linear-gradient(to bottom, #fff, ${skin.textColor}); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">${skin.name}</div>`
+        : "";
+
+      const descHTML = skin.desc ? `<div class="mod-desc">${skin.desc}</div>` : "";
+
+      const downloadBtnHTML = skin.downloadLinkIOS && skin.downloadLinkAndroid
+        ? `<div class="download-container"><div class="download-btn-main" style="background: ${skin.textColor};color: black;" onclick="toggleDownloadOptions(this, '${skin.downloadLinkAndroid}', '${skin.downloadLinkIOS}', '${skin.textColor}')">Tải xuống</div></div>`
+        : "";
+
+      const cardHTML = `
+        <div class="mod-card" style="border-color: ${skin.borderColor};color: ${skin.textColor}" onclick="changeBg('${skin.bgImg}')">
+          ${labelHTML}
+          <img src="${skin.bgImg}" class="bg" />
+          <div class="mod-info">
+            ${miniImgHTML}
+            <div class="mod-texts" style="color: ${skin.textColor}">
+              ${championNoteHTML}
+              ${titleHTML}
+              ${descHTML}
+            </div>
+          </div>
+          ${downloadBtnHTML}
+        </div>
+      `;
+
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = cardHTML;
+      skinList.appendChild(wrapper);
+    });
+
+    function toggleDownloadOptions(button, androidLink, iosLink, color) {
+      const isExpanded = button.dataset.expanded === 'true';
+      button.style.transition = 'opacity 0.3s ease';
+      button.style.opacity = '0';
+      setTimeout(() => {
+        if (isExpanded) {
+          button.innerHTML = 'Tải xuống';
+          button.dataset.expanded = 'false';
+        } else {
+          button.innerHTML = `<a href="${androidLink}" target="_blank" style="color:#000;text-decoration:none;">Android</a><span style="margin: 0 5px;">|</span><a href="${iosLink}" target="_blank" style="color:#000;text-decoration:none;">iOS</a>`;
+          button.dataset.expanded = 'true';
+        }
+        requestAnimationFrame(() => {
+          button.style.opacity = '1';
+        });
+      }, 300);
+      document.querySelectorAll('.download-btn-main').forEach(btn => {
+        if (btn !== button) {
+          btn.innerHTML = 'Tải xuống';
+          btn.dataset.expanded = 'false';
+          btn.style.opacity = '1';
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const isInside = e.target.closest('.download-container');
+      if (!isInside) {
+        document.querySelectorAll('.download-btn-main').forEach(btn => {
+          btn.innerHTML = 'Tải xuống';
+          btn.dataset.expanded = 'false';
+          btn.style.opacity = '1';
+        });
+      }
+    });
+
+    function changeBg(imgPath) {
+      const current = document.getElementById("bg");
+      const next = document.getElementById("bg-next");
+      next.style.backgroundImage = `url('${imgPath}')`;
+      next.style.opacity = 1;
+      setTimeout(() => {
+        current.style.backgroundImage = `url('${imgPath}')`;
+        next.style.opacity = 0;
+      }, 800);
+    }
+  </script>
+</body>
+</html>
