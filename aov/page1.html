@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8" /><title>DAT ALLAIN PAGES</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"><style>* {-webkit-tap-highlight-color: transparent;outline: none;}body {margin: 0;font-family: "Arial", sans-serif;color: white;background: #000;overflow-x: hidden;position: relative;}.hero {background: url("img/datallain.png") center/cover no-repeat;position: fixed;top: 0;left: 0;width: 100%;height: 100vh;z-index: -1;transition: opacity 0.8s ease-in-out;filter: blur(8px);pointer-events: none;}.overlay {position: relative;z-index: 2;padding: 30px 20px 100px;background: rgba(0, 0, 0, 0.4);min-height: 100vh;overflow-y: auto;}.header {margin-top: -30px;margin-left: -10px}.header h1 {font-family: 'Oswald', sans-serif;fonlt-size: 36px;margin: 0;font-weight: bold;height: 32px;text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);}.header h2 {font-family: 'Oswald', sans-serif;font-size: 18px;margin: 5px 1px;font-weight: normal;text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);}.main-subtitle {font-family: 'Oswald', sans-serif;font-size: 18px;font-weight: normal;text-align: center;margin-top: 45px;margin-bottom: -20px;color: white;text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);}.champion-block > div {opacity: 0;transform: translateY(20px);transition: all 0.6s ease;margin-bottom: -50px;}.champion-block > div.visible {opacity: 1;transform: translateY(0);}.swiper {width: 100%;max-width: 350px;padding: 30px 0;overflow: visible;}.swiper-wrapper {overflow: visible;}.swiper-slide {display: flex;justify-content: center;transition: transform 0.3s ease, opacity 0.3s ease;opacity: 0.8;transform: scale(0.95);z-index: 1;padding-top: 10px;}.swiper-slide-active {transform: scale(1.05);opacity: 1;z-index: 10;}.mod-card {position: relative;background: #111;border-radius: 10px;overflow: hidden;width: 100%;max-width: 350px;border: 2px solid;transition: transform 0.3s ease;cursor: pointer;background: rgba(255, 255, 255, 0.04);}.mod-card img.bg {width: 100%;display: block;}.mod-info {position: absolute;bottom: 0;left: 0;width: 100%;padding: 75px;padding-bottom: 10px;background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);display: flex;align-items: center;gap: 5px;box-sizing: border-box;}.mod-mini {position: fixed;bottom: 14px;left: 10px;width: 40px;height: 40px;border-radius: 5px;flex-shrink: 0;border: 2px solid;box-sizing: border-box;}.mod-texts {position: fixed;bottom: 15px;left: 55px;display: flex;flex-direction: column;justify-content: center;color: inherit;}.mod-title{font-weight: 700;font-size: 16px;text-transform: uppercase;margin: 0;background-clip: text;-webkit-background-clip: text;-webkit-text-fill-color: transparent;}.mod-desc {font-size: 10px;color: #fff;margin-top: -2px;word-wrap: break-word;overflow-wrap: break-word;}.label {position: absolute;top: 10px;left: 10px;background: #00ffd0;color: black;font-size: 12px;padding: 2px 8px;border-radius: 5px;font-weight: bold;}.credit {position: fixed;bottom: 1px;left: 5px;font-size: 12px;color: #ccc;z-index: 999;}.swiper-hint {text-align: center;font-size: 13px;color: #bbb;margin-top: 5px;}.mod-champion-note {font-size: 11px;text-transform: uppercase;letter-spacing: 0.5px;margin-bottom: -2px;}.switch {position: relative;display: inline-block;width: 50px;height: 26px;}.switch input {opacity: 0;width: 0;height: 0;}.slider {position: absolute;cursor: pointer;top: 0;left: 0;right: 0;bottom: 0;background-color: #ccc;transition: 0.4s;border-radius: 30px;}.slider:before {position: absolute;content: "";height: 20px;width: 20px;left: 3px;bottom: 3px;background-color: white;transition: 0.4s;border-radius: 50%;}input:checked + .slider {background-color: #00ffd0;}input:checked + .slider:before {transform: translateX(24px);}#menuButton:hover {background: rgba(0, 0, 0, 0.8);}#settingsPanel {position: fixed;top: 0;right: -300px;width: 260px;height: 100%;background: rgba(20, 20, 20, 0.95);color: white;padding: 20px;box-shadow: -2px 0 10px rgba(0,0,0,0.4);transition: right 0.3s ease;z-index: 999;}#settingsPanel.open {right: 0;}#settingsPanel h3 {margin-top: 0;font-size: 22px;}.setting-row {margin-top: 20px;display: flex;justify-content: space-between;align-items: center;}#closeSettings {margin-top: 30px;width: 100%;padding: 8px;background: #444;color: white;border: none;border-radius: 6px;cursor: pointer;font-size: 16px;}#closeSettings:hover {background: #666;}.switch {position: relative;display: inline-block;width: 40px;height: 22px;}.switch input {opacity: 0;width: 0;height: 0;}.slider {position: absolute;cursor: pointer;background-color: #ccc;border-radius: 34px;top: 0;left: 0;right: 0;bottom: 0;transition: 0.4s;}.slider::before {position: absolute;content: "";height: 16px;width: 16px;left: 3px;bottom: 3px;background-color: white;border-radius: 50%;transition: 0.4s;}input:checked + .slider {background-color: #00ffd0;}input:checked + .slider::before {transform: translateX(18px);}.download-container {position: absolute;bottom: 11px;right: 7px;z-index: 50;}.download-btn-main {color: #000 !important;padding: 5px 15px;border-radius: 20px;font-weight: bold;text-align: center;cursor: pointer;transition: all 1s ease;white-space: nowrap;display: inline-block;opacity: 1;}</style></head><body><div id="bg" class="hero"></div><div id="bg-next" class="hero" style="opacity: 0;"></div><div class="overlay"><div class="header"><h1>DAT ALLAIN PAGES</h1><h2>Trang web mod skin AOV</h2><h3 class="main-subtitle">CÁC BẢN MOD HIỆN CÓ</h3><div class="champion-block" id="skin-list"></div><div class="credit">*Mẹo: vuốt từ bên phải sang để mở cài đặt</div><script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script><script>
+    const skins = [
+      {
+        champion: "Allain",
+        bgImg: "img/allain.png",
+        label: "Có mod mới",
+        textColor: "rgb(255, 0, 0)",
+        borderColor: "rgba(255, 0, 0, 0.3)",
+      },
+      {
+        champion: "Allain",
+        name: "FIREFLY",
+        downloadLinkIOS: "link4m.com/SnKt5MNf",
+        downloadLinkAndroid: "link4m.com/EOpiU5o",
+        bgImg: "img/firefly.png",
+        miniImg: "img/firefly_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(60, 255, 193)",
+        borderColor: "rgba(60, 255, 193, 0.6)",
+      },
+      {
+        champion: "Allain",
+        name: "LẠC TUYẾT BẠCH LANG",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/ltbl.png",
+        miniImg: "img/ltbl_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(155, 255, 255)",
+        borderColor: "rgba(155, 255, 255, 0.3)",
+      },
+      {
+        champion: "Kil'Groth",
+        bgImg: "img/kilgroth.png",
+        label: "Có mod mới",
+        textColor: "rgb(0, 176, 255)",
+        borderColor: "rgba(0, 176, 255, 0.5)",
+      },
+      {
+        champion: "Kil'Groth",
+        name: "Hắc Vệ Thần",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/hvt.png",
+        miniImg: "img/hvt_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound",
+        textColor: "rgb(0, 130, 255)",
+        borderColor: "rgba(0, 130, 255, 0.5)",
+      },
+      {
+        champion: "Nakroth",
+        bgImg: "img/nakroth.png",
+        label: "Có mod mới",
+        textColor: "rgb(255, 0, 0)",
+        borderColor: "rgba(255, 0, 0, 0.5)",
+      },
+      {
+        champion: "Nakroth",
+        name: "Xiao",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/xiao.png",
+        miniImg: "img/xiao_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound - Button - Notify",
+        textColor: "rgb(61, 245, 255)",
+        borderColor: "rgba(61, 245, 255, 0.5)",
+      },
+      {
+        champion: "Florentino",
+        bgImg: "img/florentino.png",
+        label: "Có mod mới",
+        textColor: "rgb(255, 106, 0)",
+        borderColor: "rgba(255, 106, 0, 0.5)",
+      },
+      {
+        champion: "Florentino",
+        name: "Furina",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/furina.png",
+        miniImg: "img/furina_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound - Button",
+        textColor: "rgb(0, 176, 255)",
+        borderColor: "rgba(0, 176, 255, 0.5)",
+      },
+      
+      {
+        champion: "PACK",
+        bgImg: "img/pack.png",
+        label: "Có mod mới",
+        textColor: "rgb(244, 180, 70)",
+        borderColor: "rgba(244, 180, 70, 0.5)",
+      },
+      {
+        champion: "PACK",
+        name: "4 SKINS UNDERWORLD",
+        downloadLinkIOS: "https://youtube.com/@datallain07",
+        downloadLinkAndroid: "https://youtube.com/@datallain07",
+        bgImg: "img/underworld.png",
+        miniImg: "img/pack_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound",
+        textColor: "rgb(244, 180, 70)",
+        borderColor: "rgba(244, 180, , 0.5)",
+      },
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+    ];const grouped = skins.reduce((acc, skin) => {if (!acc[skin.champion]) acc[skin.champion] = [];acc[skin.champion].push(skin);return acc;}, {});const skinList = document.getElementById("skin-list");for (const champion in grouped) {const group = grouped[champion];const swiperId = `swiper-${champion.toLowerCase()}`;const swiperHTML = `<div><div class="swiper mySwiper" id="${swiperId}"><div class="swiper-wrapper">${group.map((skin) => {const hasFullInfo =skin.bgImg &&skin.name &&skin.miniImg &&skin.desc &&skin.textColor &&skin.borderColor;const labelHTML = skin.label ? `<span class="label" style="background-color: ${skin.textColor}">${skin.label}</span>` : "";const miniImgHTML = skin.miniImg? `<img src="${skin.miniImg}" class="mod-mini" style="border-color: ${skin.borderColor}" />`: "";const championNoteHTML = (skin.champion && skin.miniImg) ? `<div class="mod-champion-note">${skin.champion}</div>` : "";const titleHTML = skin.name? `<div class="mod-title" style="background: linear-gradient(to bottom, #fff, ${skin.textColor});-webkit-background-clip: text;-webkit-text-fill-color: transparent;display: inline-block;">${skin.name}</div>`: "";const descHTML = skin.desc ? `<div class="mod-desc">${skin.desc}</div>` : "";const downloadBtnHTML = skin.downloadLinkIOS && skin.downloadLinkAndroid ? `<div class="download-container"><div class="download-btn-main"style="background: ${skin.textColor};color: black;"onclick="toggleDownloadOptions(this, '${skin.downloadLinkAndroid}', '${skin.downloadLinkIOS}', '${skin.textColor}')">Tải xuống</div></div>` : skin.downloadLink ? `<a href="${skin.downloadLink}" class="download-btn" style="background: ${skin.textColor};color: black;" target="_blank">Tải xuống</a>` : "";const onclickAttr = hasFullInfo ? `onclick="changeBg('${skin.bgImg}')"` : "";return `<div class="swiper-slide"><div class="mod-card" style="border-color: ${skin.borderColor};color: ${skin.textColor}" ${onclickAttr}>${labelHTML}<img src="${skin.bgImg}" class="bg" /><div class="mod-info">${miniImgHTML}<div class="mod-texts" style="color: ${skin.textColor}">${championNoteHTML}${titleHTML}${descHTML}</div></div>${downloadBtnHTML}</div></div>`;}).join("")}</div></div></div>`;const wrapper = document.createElement("div");wrapper.innerHTML = swiperHTML;skinList.appendChild(wrapper);}const swiperInstances = [];document.querySelectorAll(".mySwiper").forEach((swiperEl, idx) => {const swiper = new Swiper(swiperEl, {effect: "cards",grabCursor: true,loop: true,cardsEffect: {perSlideOffset: 1,perSlideRotate: 0,rotate: true,slideShadows: false,},on: {slideChange() {swiperInstances.forEach((sw, i) => {if (i !== idx) {sw.slideToLoop(0, 300);}});const slides = swiperEl.querySelectorAll(".swiper-slide");const active = slides[this.activeIndex];if (active) {const img = active.querySelector(".mod-card")?.getAttribute("onclick");if (img) eval(img);}},},});swiperInstances.push(swiper);});const champions = document.querySelectorAll(".champion-block > div");function checkVisible() {champions.forEach((el) => {const rect = el.getBoundingClientRect();if (rect.top < window.innerHeight) {el.classList.add("visible");}});}window.addEventListener("scroll", checkVisible);window.addEventListener("load", checkVisible);function toggleDownloadOptions(button, androidLink, iosLink) {const isExpanded = button.dataset.expanded === 'true';button.style.transition = 'opacity 0.3s ease';button.style.opacity = '0';setTimeout(() => {if (isExpanded) {button.innerHTML = 'Tải xuống';button.dataset.expanded = 'false';} else {button.innerHTML = `<a href="${androidLink}" target="_blank" style="color:#000;text-decoration:none;">Android</a><span style="margin: 0 5px;">|</span><a href="${iosLink}" target="_blank" style="color:#000;text-decoration:none;">iOS</a>`;button.dataset.expanded = 'true';}requestAnimationFrame(() => {button.style.opacity = '1';});}, 300);document.querySelectorAll('.download-btn-main').forEach(btn => {if (btn !== button) {btn.innerHTML = 'Tải xuống';btn.dataset.expanded = 'false';btn.style.opacity = '1';}});}document.addEventListener('click', (e) => {const isInside = e.target.closest('.download-container');if (!isInside) {document.querySelectorAll('.download-btn-main').forEach(btn => {btn.innerHTML = 'Tải xuống';btn.dataset.expanded = 'false';btn.style.opacity = '1';});}});</script><div id="settingsPanel"><h3>Cài đặt</h3><div class="setting-row" style="flex-direction: column; align-items: flex-start;"><label style="font-weight: bold; margin-bottom: 10px;">Chế độ xem</label><button onclick="window.location.href=window.location.href" style="margin-bottom: 10px;width: 100%;padding: 8px;background: #00ffd0;border: none;border-radius: 6px;color: black;cursor: pointer;">Xem đầy đủ</button><button onclick="window.location.href='page2.html'" style="width: 100%;padding: 8px;background: #444;border: none;border-radius: 6px;color: white;cursor: pointer;">Xem dạng danh sách</button></div><div class="setting-row"><span>Đổi nền theo skin</span><label class="switch"><input type="checkbox" id="bgToggle" checked><span class="slider"></span></label></div></div><script>let bgChangeEnabled = true;document.getElementById("bgToggle").addEventListener("change", function() {bgChangeEnabled = this.checked;});const menuBtn = document.getElementById("menuButton");const settings = document.getElementById("settingsPanel");function openSettings() {settings.classList.add("open");menuBtn.style.display = "none";}function closeSettings() {settings.classList.remove("open");menuBtn.style.display = "block";}document.addEventListener("click", (e) => {if (settings.classList.contains("open") &&!settings.contains(e.target) &&e.target !== menuBtn){closeSettings();}});let touchStartX = 0;let touchStartY = 0;const threshold = 50;const verticalLimit = 100;document.addEventListener('touchstart', (e) => {if (e.touches.length === 1) {touchStartX = e.touches[0].clientX;touchStartY = e.touches[0].clientY;}});document.addEventListener('touchmove', (e) => {if (e.touches.length !== 1) return;const touchX = e.touches[0].clientX;const touchY = e.touches[0].clientY;const deltaX = touchStartX - touchX;const deltaY = Math.abs(touchStartY - touchY);const screenWidth = window.innerWidth;if (touchStartX > screenWidth - 30) {if (deltaX > threshold && deltaY < verticalLimit) {openSettings();}}});function changeBg(imgPath) {if (!bgChangeEnabled) return;const current = document.getElementById("bg");const next = document.getElementById("bg-next");next.style.backgroundImage = `url('${imgPath}')`;next.style.opacity = 1;setTimeout(() => {current.style.backgroundImage = `url('${imgPath}')`;next.style.opacity = 0;}, 800);}</script></body></html>
