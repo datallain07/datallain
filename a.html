@@ -158,6 +158,65 @@
   color: #ccc;
   text-align: left;
 }
+#settingsPanel {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 260px;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.95);
+  color: white;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.4);
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+#settingsPanel.open { right: 0; }
+.setting-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #00ffd0;
+}
+input:checked + .slider::before {
+  transform: translateX(18px);
+}
   </style>
 </head>
 <body>
@@ -326,5 +385,69 @@
       }, 800);
     }
   </script>
+  <div id="settingsPanel">
+  <h3>Cài đặt</h3>
+  <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
+    <label style="font-weight: bold; margin-bottom: 10px;">Chế độ xem</label>
+    <button onclick="window.location.href='dat2.html'" style="margin-bottom: 10px;width: 100%;padding: 8px;background: #444;border: none;border-radius: 6px;color: white;cursor: pointer;">Xem đầy đủ</button>
+    <button onclick="window.location.href=window.location.href" style="width: 100%;padding: 8px;background: #00ffd0;border: none;border-radius: 6px;color: back;cursor: pointer;">Xem dạng danh sách</button>
+  </div>
+  <div class="setting-row">
+    <span>Đổi nền theo skin</span>
+    <label class="switch">
+      <input type="checkbox" id="bgToggle" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+<script>
+let bgChangeEnabled = true;
+document.getElementById("bgToggle").addEventListener("change", function() {
+  bgChangeEnabled = this.checked;
+});
+
+function changeBg(imgPath) {
+  if (!bgChangeEnabled) return;
+  const current = document.getElementById("bg");
+  const next = document.getElementById("bg-next");
+  next.style.backgroundImage = `url('${imgPath}')`;
+  next.style.opacity = 1;
+  setTimeout(() => {
+    current.style.backgroundImage = `url('${imgPath}')`;
+    next.style.opacity = 0;
+  }, 800);
+}
+
+let touchStartX = 0;
+let touchStartY = 0;
+const threshold = 50;
+const verticalLimit = 100;
+
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }
+});
+document.addEventListener('touchmove', (e) => {
+  if (e.touches.length !== 1) return;
+  const touchX = e.touches[0].clientX;
+  const touchY = e.touches[0].clientY;
+  const deltaX = touchStartX - touchX;
+  const deltaY = Math.abs(touchStartY - touchY);
+  const screenWidth = window.innerWidth;
+  if (touchStartX > screenWidth - 30) {
+    if (deltaX > threshold && deltaY < verticalLimit) {
+      document.getElementById("settingsPanel").classList.add("open");
+    }
+  }
+  document.addEventListener("click", (e) => {
+  const settings = document.getElementById("settingsPanel");
+  if (settings.classList.contains("open") && !settings.contains(e.target)) {
+    settings.classList.remove("open");
+  }
+});
+});
+</script>
 </body>
 </html>
