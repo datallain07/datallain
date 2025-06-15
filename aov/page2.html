@@ -242,11 +242,23 @@ input:checked + .slider::before {
       <h3 class="main-subtitle">CÁC BẢN MOD HIỆN CÓ</h3>
     </div>
     <div id="skin-list"></div>
-    <div class="credit">*Mẹo: vuốt từ bên phải sang sẽ có thứ bạn cần</div>
+    <div class="credit">*Mẹo: vuốt từ bên phải sang để xem hướng da</div>
   </div>
 
   <script>
     const skins = [
+      {
+        champion: "Sinestrea",
+        name: "Nilou",
+        downloadLinkIOS: "https://link4m.com/mQ61uYJ",
+        downloadLinkAndroid: "https://link4m.com/TlmYSkI",
+        bgImg: "img/nilou.png",
+        miniImg: "img/nilou_mini.png",
+        label: "Mới",
+        desc: "Effects - Sound - Button",
+        textColor: "rgb(0, 176, 255)",
+        borderColor: "rgba(0, 176, 255, 0.5)",
+      },
       {
         champion: "Mina",
         name: "Arlecchino",
@@ -487,6 +499,9 @@ input:checked + .slider::before {
       }, 800);
     }
   </script>
+  <button id="settingsButton" style="position: fixed; top: 10px; right: 10px; z-index: 1000; background: #00000011; color: white; border: none; padding: 10px 15px; border-radius: 10px; font-weight: bold; cursor: pointer;">
+    ☰
+  </button>
   <div id="settingsPanel">
   <h3>Cài đặt</h3>
   <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
@@ -565,6 +580,25 @@ document.addEventListener('touchmove', (e) => {
     settings.classList.remove("open");
   }
 });
+});
+const settingsPanel = document.getElementById("settingsPanel");
+const settingsButton = document.getElementById("settingsButton");
+
+settingsButton.addEventListener("click", function(e) {
+  e.stopPropagation();
+  settingsPanel.classList.add("open");
+  settingsButton.style.display = "none";
+});
+
+document.addEventListener("click", function(e) {
+  if (
+    settingsPanel.classList.contains("open") &&
+    !settingsPanel.contains(e.target) &&
+    e.target !== settingsButton
+  ) {
+    settingsPanel.classList.remove("open");
+    settingsButton.style.display = "block";
+  }
 });
 </script>
 </body>
