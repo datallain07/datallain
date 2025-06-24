@@ -1,0 +1,107 @@
+const menuButton = document.getElementById('menu-button');
+const sideMenu = document.getElementById('side-menu');
+const overlay = document.getElementById('overlay');
+menuButton.addEventListener('click', () => {
+  sideMenu.classList.add('show');
+  overlay.classList.add('show');
+});
+overlay.addEventListener('click', () => {
+  sideMenu.classList.remove('show');
+  overlay.classList.remove('show');
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.getElementById("welcome-popup");
+  const closeBtn = document.getElementById("close-popup");
+  let canClose = false;
+  setTimeout(() => {
+    localStorage.setItem("hasVisitedBefore", "true");
+    popup.classList.add("show");
+    setTimeout(() => {
+      canClose = true;
+      closeBtn.disabled = false;
+      closeBtn.textContent = ""
+      closeBtn.style.opacity = "1";
+      closeBtn.style.pointerEvents = "auto";
+    }, 0);
+    closeBtn.disabled = true;
+    closeBtn.textContent = "";
+    closeBtn.style.opacity = "0.5";
+    closeBtn.style.pointerEvents = "none";
+    
+  }, 100);
+  function closePopup() {
+    if (!canClose) return;
+    popup.classList.remove("show");
+  }
+  popup.addEventListener("transitionend", function(e) {
+    if (e.propertyName === "opacity" && !popup.classList.contains("show")) {
+      popup.style.display = "none";
+    }
+  });
+  closeBtn.addEventListener("click", closePopup);
+  popup.addEventListener("click", function(e) {
+    if (e.target === popup && canClose) {
+      closePopup();
+    }
+  });
+});
+window.addEventListener('wheel', function(e) {
+  if (e.ctrlKey) e.preventDefault();
+}, { passive: false });
+window.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=')) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const donateItem = document.querySelector('.menu-item:nth-child(1)');
+  const donatePopup = document.getElementById('donate-popup');
+  donateItem.addEventListener('click', () => {
+    donatePopup.classList.add('show');
+    donatePopup.classList.remove('hide');
+  });
+  donatePopup.addEventListener('click', (e) => {
+    if (e.target === donatePopup) {
+      donatePopup.classList.add('hide');
+      donatePopup.classList.remove('show');
+      setTimeout(() => {
+        donatePopup.style.display = 'none';
+      }, 300);
+    }
+  });
+  const observer = new MutationObserver(() => {
+    if (donatePopup.classList.contains('show')) {
+      donatePopup.style.display = 'flex';
+    }
+  });
+  observer.observe(donatePopup, { attributes: true });
+});
+function getRGBColor(time) {
+  const r = Math.floor(127 * Math.sin(0.03 * time + 0) + 128);
+  const g = Math.floor(127 * Math.sin(0.03 * time + 2) + 128);
+  const b = Math.floor(127 * Math.sin(0.03 * time + 4) + 128);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+function startRGBGlow(element) {
+  let time = 0;
+  element.classList.add('rgb-glow');
+  const interval = setInterval(() => {
+    const color = getRGBColor(time);
+    element.style.setProperty('--rgb-color', color);
+    time++;
+  }, 50); 
+  return () => {
+    clearInterval(interval);
+    element.classList.remove('rgb-glow');
+  };
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.menu-item');
+  let stopGlow = null;
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      if (stopGlow) stopGlow();
+      stopGlow = startRGBGlow(item);
+    });
+  });
+});
