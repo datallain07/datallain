@@ -237,3 +237,14 @@ const skinList = document.getElementById("skin-list");
         next.style.opacity = 0;
       }, 800);
     }
+    
+document.querySelectorAll('.mod-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    // Nếu muốn chỉ 1 card được mở tại 1 thời điểm:
+    document.querySelectorAll('.mod-card').forEach(function(c) {
+      if (c !== card) c.classList.remove('expand');
+    });
+    // Toggle mở rộng cho card được bấm
+    card.classList.toggle('expand');
+  });
+});
