@@ -191,19 +191,13 @@ const skinList = document.getElementById("skin-list");
   document.querySelectorAll('.mod-card').forEach(function(card) {
   card.addEventListener('click', function() {
     const isExpanded = card.classList.contains('expand');
+    if (isExpanded) return;
     document.querySelectorAll('.mod-card.expand').forEach(function(c) {
-      if (c !== card) {
-        collapseCard(c);
-        c.classList.remove('expand');
-      }
+      collapseCard(c);
+      c.classList.remove('expand');
     });
-    if (isExpanded) {
-      collapseCard(card);
-      card.classList.remove('expand');
-    } else {
-      expandCard(card);
-      card.classList.add('expand');
-    }
+    expandCard(card);
+    card.classList.add('expand');
   });
 });
 function expandCard(card) {
