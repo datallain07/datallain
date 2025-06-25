@@ -296,9 +296,6 @@ header {
   cursor: pointer;
   transition: height 0.4s ease;
 }
-.mod-card.expand {
-  height: 210px;
-}
 .mod-card img.bg {
   width: 100%;
   display: block;

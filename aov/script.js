@@ -184,19 +184,46 @@ const skinList = document.getElementById("skin-list");
           ${downloadBtnHTML}
         </div>
       `;
-
       const wrapper = document.createElement("div");
       wrapper.innerHTML = cardHTML;
       skinList.appendChild(wrapper);
     });
   document.querySelectorAll('.mod-card').forEach(function(card) {
   card.addEventListener('click', function() {
-    document.querySelectorAll('.mod-card').forEach(function(c) {
-      if (c !== card) c.classList.remove('expand');
+    const isExpanded = card.classList.contains('expand');
+    document.querySelectorAll('.mod-card.expand').forEach(function(c) {
+      if (c !== card) {
+        collapseCard(c);
+        c.classList.remove('expand');
+      }
     });
-    card.classList.toggle('expand');
+    if (isExpanded) {
+      collapseCard(card);
+      card.classList.remove('expand');
+    } else {
+      expandCard(card);
+      card.classList.add('expand');
+    }
   });
 });
+function expandCard(card) {
+  const startHeight = card.offsetHeight;
+  card.style.height = startHeight + 'px';
+  card.classList.add('expand');
+  card.offsetHeight;
+  const targetHeight = card.scrollHeight;
+  card.style.height = targetHeight + 'px';
+  card.addEventListener('transitionend', function handler() {
+    card.style.height = 'auto';
+    card.removeEventListener('transitionend', handler);
+  });
+}
+function collapseCard(card) {
+  const startHeight = card.scrollHeight;
+  card.style.height = startHeight + 'px';
+  card.offsetHeight;
+  card.style.height = '60px';
+}
     function toggleDownloadOptions(button, androidLink, iosLink, color) {
       const isExpanded = button.dataset.expanded === 'true';
       button.style.transition = 'opacity 0.3s ease';
