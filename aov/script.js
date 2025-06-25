@@ -146,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const skinList = document.getElementById("skin-list");
-
     skins.forEach((skin) => {
       const labelHTML = skin.label
         ? `<span class="label" style="background-color: ${skin.textColor}">${skin.label}</span>`
@@ -190,7 +189,14 @@ const skinList = document.getElementById("skin-list");
       wrapper.innerHTML = cardHTML;
       skinList.appendChild(wrapper);
     });
-
+  document.querySelectorAll('.mod-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.mod-card').forEach(function(c) {
+      if (c !== card) c.classList.remove('expand');
+    });
+    card.classList.toggle('expand');
+  });
+});
     function toggleDownloadOptions(button, androidLink, iosLink, color) {
       const isExpanded = button.dataset.expanded === 'true';
       button.style.transition = 'opacity 0.3s ease';
@@ -215,7 +221,6 @@ const skinList = document.getElementById("skin-list");
         }
       });
     }
-
     document.addEventListener('click', (e) => {
       const isInside = e.target.closest('.download-container');
       if (!isInside) {
@@ -226,7 +231,6 @@ const skinList = document.getElementById("skin-list");
         });
       }
     });
-
     function changeBg(imgPath) {
       const current = document.getElementById("bg");
       const next = document.getElementById("bg-next");
@@ -237,14 +241,3 @@ const skinList = document.getElementById("skin-list");
         next.style.opacity = 0;
       }, 800);
     }
-    
-document.querySelectorAll('.mod-card').forEach(function(card) {
-  card.addEventListener('click', function() {
-    // Nếu muốn chỉ 1 card được mở tại 1 thời điểm:
-    document.querySelectorAll('.mod-card').forEach(function(c) {
-      if (c !== card) c.classList.remove('expand');
-    });
-    // Toggle mở rộng cho card được bấm
-    card.classList.toggle('expand');
-  });
-});
