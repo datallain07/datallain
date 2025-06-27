@@ -271,14 +271,26 @@ header {
   min-height: 100vh;
   overflow-y: auto;
 }
+#skin-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  height: 0;
+}
+#skin-list.expanded {
+  margin-top: 10px;
+}
 .mod-card {
+  flex: 1 1 300px;
+  max-width: 350px;
   position: relative;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   overflow: hidden;
   height: 60px;
-  max-width: 350px;
-  margin: 7px auto;
   border: 2px solid;
   cursor: pointer;
   transition: height 0.4s ease;
@@ -364,12 +376,7 @@ header {
   display: inline-block;
   opacity: 1;
 } 
-#skin-list {
-  overflow: hidden;
-  transition: height 0.4s ease;
-  height: 0;
-}
-  .credit {
+.credit {
   left: 5px;
   bottom: 1px;
   z-index: 100;
@@ -450,10 +457,9 @@ body.dark-mode .menu {
   border-color: rgba(255,255,255,0.2) !important;
 }
 body.dark-mode .popup-title,
-body.dark-mode .no-animation,
 body.dark-mode .popup-message,
 body.dark-mode .donate-message,
-body.dark-mode .mod-desc {
+body.dark-mode .menu-item .text small {
   color: #ccc !important;
 }
 body.dark-mode img[src*="icons/"]:not([src$="daticon.png"]) {

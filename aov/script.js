@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isOpen) return;
     skinList.style.height = skinList.scrollHeight + "px";
     skinList.classList.remove("collapsed");
+    skinList.classList.add("expanded");
     skinList.addEventListener("transitionend", function handler() {
       skinList.style.height = "auto";
       skinList.removeEventListener("transitionend", handler);
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(() => {
           skinList.style.height = "0px";
           skinList.classList.add("collapsed");
+          skinList.classList.remove("expanded");
         });
         isOpen = false;
       }
@@ -189,9 +191,7 @@ const skinList = document.getElementById("skin-list");
           ${downloadBtnHTML}
         </div>
       `;
-      const wrapper = document.createElement("div");
-      wrapper.innerHTML = cardHTML;
-      skinList.appendChild(wrapper);
+      skinList.insertAdjacentHTML("beforeend", cardHTML);
     });
   document.querySelectorAll('.mod-card').forEach(function(card) {
   card.addEventListener('click', function() {
