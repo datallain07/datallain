@@ -1,28 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const chonMod = document.getElementById("chonmod");
   const skinList = document.getElementById("skin-list");
   let isOpen = false;
-  chonMod.addEventListener("click", function(event) {
+  chonMod.addEventListener("click", function (event) {
     event.preventDefault();
     event.stopPropagation();
-    if (!isOpen) {
+    if (isOpen) return;
+    skinList.style.height = skinList.scrollHeight + "px";
+    skinList.classList.remove("collapsed");
+    skinList.addEventListener("transitionend", function handler() {
       skinList.style.height = "auto";
-      const fullHeight = skinList.scrollHeight + "px";
-      skinList.style.height = "0px";
-      requestAnimationFrame(() => {
-        skinList.style.height = fullHeight;
-      });
-      isOpen = true;
-    } else {}
+      skinList.removeEventListener("transitionend", handler);
+    });
+    isOpen = true;
   });
-  document.addEventListener("click", function(event) {
+  document.addEventListener("click", function (event) {
     const target = event.target;
     if (!skinList.contains(target) && target !== chonMod) {
-      skinList.style.height = "0px";
-      isOpen = false;
+      if (isOpen) {
+        skinList.style.height = skinList.scrollHeight + "px";
+        requestAnimationFrame(() => {
+          skinList.style.height = "0px";
+          skinList.classList.add("collapsed");
+        });
+        isOpen = false;
+      }
     }
   });
-  skinList.addEventListener("click", function(event) {
+  skinList.addEventListener("click", function (event) {
     event.stopPropagation();
   });
 });
@@ -262,3 +267,38 @@ function collapseCard(card) {
         next.style.opacity = 0;
       }, 800);
     }
+document.addEventListener("DOMContentLoaded", function () {
+  const body = document.body;
+
+  // Animation toggle
+  const animationToggle = document.getElementById("toggle-animation");
+  const disableAnimations = localStorage.getItem("disableAnimations") === "true";
+  if (disableAnimations) {
+    body.classList.add("no-animation");
+    animationToggle.checked = true;
+  }
+  animationToggle.addEventListener("change", function () {
+    if (this.checked) {
+      body.classList.add("no-animation");
+      localStorage.setItem("disableAnimations", "true");
+    } else {
+      body.classList.remove("no-animation");
+      localStorage.setItem("disableAnimations", "false");
+    }
+  });
+});
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+if (localStorage.getItem("darkMode") === "enabled") {
+  body.classList.add("dark-mode");
+  darkToggle.checked = true;
+}
+darkToggle.addEventListener("change", function() {
+  if (this.checked) {
+    body.classList.add("dark-mode");
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    body.classList.remove("dark-mode");
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
