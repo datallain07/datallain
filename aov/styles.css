@@ -443,6 +443,7 @@ input:checked + .slider::before {
 .no-animation {
   --rgb-color: #00000;
 }
+body.dark-mode,
 body.dark-mode .app-header,
 body.dark-mode header,
 body.dark-mode .menu-item,
