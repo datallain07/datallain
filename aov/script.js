@@ -285,6 +285,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+if (localStorage.getItem("darkMode") === "enabled") {
+  body.classList.add("dark-mode");
+  darkToggle.checked = true;
+} else {
+  body.classList.remove("dark-mode");
+  darkToggle.checked = false;
+}
+darkToggle.addEventListener("change", function () {
+  if (this.checked) {
+    body.classList.add("dark-mode");
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    body.classList.remove("dark-mode");
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
 document.addEventListener("DOMContentLoaded", () => {
   const qualityToggle = document.getElementById("reduceQualityToggle");
   if (localStorage.getItem("reduceQuality") === "enabled") {
@@ -297,12 +315,19 @@ document.addEventListener("DOMContentLoaded", () => {
     applyImageCompression(shouldReduce);
   });
   function applyImageCompression(shouldReduce) {
-    document.querySelectorAll(".mod-card img").forEach(img => {
+    const images = document.querySelectorAll(".mod-card img");
+    images.forEach(img => {
       if (shouldReduce) {
         if (!img.dataset.originalSrc) {
           img.dataset.originalSrc = img.src;
         }
-        compressImage(img, 0.35, 0.35);
+        waitForImageLoad(img).then(loadedImg => {
+          const w = loadedImg.naturalWidth;
+          const h = loadedImg.naturalHeight;
+          if (w <= 360 && h <= 360) return;
+          const scale = 360 / Math.max(w, h);
+          compressImage(loadedImg, scale, 0.3);
+        });
       } else {
         if (img.dataset.originalSrc) {
           img.src = img.dataset.originalSrc;
@@ -310,17 +335,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  function compressImage(imgElement, scale = 0.35, quality = 0.35) {
+  function waitForImageLoad(img) {
+    return new Promise(resolve => {
+      if (img.complete) resolve(img);
+      else {
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(img);
+      }
+    });
+  }
+  function compressImage(imgElement, scale = 1, quality = 0.2) {
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = imgElement.src;
     img.onload = function () {
       const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
       canvas.width = img.width * scale;
       canvas.height = img.height * scale;
+      const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const compressedData = canvas.toDataURL("image/jpeg", quality);
+      const compressedData = canvas.toDataURL("image/webp", quality);
       imgElement.src = compressedData;
     };
   }
