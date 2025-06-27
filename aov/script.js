@@ -269,8 +269,6 @@ function collapseCard(card) {
     }
 document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
-
-  // Animation toggle
   const animationToggle = document.getElementById("toggle-animation");
   const disableAnimations = localStorage.getItem("disableAnimations") === "true";
   if (disableAnimations) {
@@ -287,18 +285,43 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-const darkToggle = document.getElementById("darkModeToggle");
-const body = document.body;
-if (localStorage.getItem("darkMode") === "enabled") {
-  body.classList.add("dark-mode");
-  darkToggle.checked = true;
-}
-darkToggle.addEventListener("change", function() {
-  if (this.checked) {
-    body.classList.add("dark-mode");
-    localStorage.setItem("darkMode", "enabled");
-  } else {
-    body.classList.remove("dark-mode");
-    localStorage.setItem("darkMode", "disabled");
+document.addEventListener("DOMContentLoaded", () => {
+  const qualityToggle = document.getElementById("reduceQualityToggle");
+  if (localStorage.getItem("reduceQuality") === "enabled") {
+    qualityToggle.checked = true;
+    applyImageCompression(true);
+  }
+  qualityToggle.addEventListener("change", function () {
+    const shouldReduce = this.checked;
+    localStorage.setItem("reduceQuality", shouldReduce ? "enabled" : "disabled");
+    applyImageCompression(shouldReduce);
+  });
+  function applyImageCompression(shouldReduce) {
+    document.querySelectorAll(".mod-card img").forEach(img => {
+      if (shouldReduce) {
+        if (!img.dataset.originalSrc) {
+          img.dataset.originalSrc = img.src;
+        }
+        compressImage(img, 0.35, 0.35);
+      } else {
+        if (img.dataset.originalSrc) {
+          img.src = img.dataset.originalSrc;
+        }
+      }
+    });
+  }
+  function compressImage(imgElement, scale = 0.35, quality = 0.35) {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = imgElement.src;
+    img.onload = function () {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const compressedData = canvas.toDataURL("image/jpeg", quality);
+      imgElement.src = compressedData;
+    };
   }
 });
