@@ -424,7 +424,7 @@ wrapper.style.position = 'relative';
 wrapper.style.marginTop = '8px';
 const img = document.createElement('img');
 img.src = bigUrl;
-img.alt = `Splash ${fullId}`;
+img.alt = `${fullId}`;
 img.style.width = '100%';
 img.style.borderRadius = '12px';
 const idTag = document.createElement('div');
@@ -470,7 +470,7 @@ async function loadHeroHeads() {
       const img = document.createElement('img');
       img.src = headUrl;
       img.className = 'thumb';
-      img.alt = `Hero ${heroId}`;
+      img.alt = `${heroId}`;
       const textDiv = document.createElement('div');
       textDiv.className = 'text';
       const nameEl = document.createElement('strong');
