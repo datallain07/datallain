@@ -40,6 +40,13 @@
       </label>
       <span class="toggle-label">Giảm chất lượng hình ảnh</span>
     </div><br>
+    <div class="toggle-wrap">
+  <label class="switch">
+    <input type="checkbox" id="toggle-show-id">
+    <span class="slider"></span>
+  </label>
+  <span class="toggle-label">ID Tướng - Skin</span>
+</div><br>
   </div>
 </div>
   <main class="menu">
@@ -83,14 +90,6 @@
       </div>
     </div>
     <div class="menu-item">
-      <img src="icons/res.png" alt="res" class="icon-img">
-      <div class="text">
-        <a href="https://drive.google.com/uc?export=download&id=1_XTbzLR3PkDe7aaYV3sAG6qiSoJi3Hyu" target="_blank">
-        <strong>RESOURCES MỚI [Android]</strong><br>
-        <small>Click để tải resources Android mới nhất</small></a>
-      </div>
-    </div>
-    <div class="menu-item">
       <img src="icons/huongdan.png" alt="huongdan" class="icon-img">
       <div class="text">
         <a href="video/fixadr11.mp4" target="_blank">
@@ -98,6 +97,25 @@
         <small>Click để xem hướng dẫn fix thao tác hoàn thành với lỗi</small></a>
       </div>
     </div>
+    <div class="menu-item">
+      <img src="icons/res.png" alt="res" class="icon-img">
+      <div class="text">
+        <a href="https://drive.google.com/uc?export=download&id=1_XTbzLR3PkDe7aaYV3sAG6qiSoJi3Hyu" target="_blank">
+        <strong>RESOURCES MỚI [Android]</strong><br>
+        <small>Click để tải resources Android mới nhất</small></a>
+      </div>
+    </div>
+    <div class="menu-item" id="open-splash">
+      <img src="icons/image.png" alt="res" class="icon-img">
+      <div class="text">
+        <strong>THƯ VIỆN SPLASH ART</strong><br>
+        <small>Click để xem splash art tướng</small>
+      </div>
+    </div>
+    <div id="splash-container" class="hidden">
+      <input id="search" placeholder="Tìm kiếm bằng id hoặc tên..." />
+      <div class="dat2" id="head-grid"></div>
+      </div>
     <div class="menu-item">
       <img src="icons/nmm.png" alt="YouTube" class="icon-img">
       <div class="text">

@@ -1,0 +1,105 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+body {
+  background: #1a1a1a;
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+#search {
+  display: block;
+  margin: 10px auto 0 0;
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: none;
+}
+
+.dat2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.dat2-item {
+  background: white;
+  border: 0.1px solid black;
+  border-radius: 7px;
+  padding: 8px;
+  transition: border-color 0.3s ease, grid-column 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chiếm toàn bộ chiều ngang khi mở rộng */
+.dat2-item.active {
+  grid-column: 1 / -1;
+}
+
+.dat2-header {
+  display: flex;
+  align-items: center;
+}
+
+.dat2-item img.thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.dat2-item .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dat2-item .text strong {
+  font-size: 16px;
+  color: #000;
+}
+
+.dat2-item .text small {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Container ảnh splash */
+.splash-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.dat2-item.active .splash-container {
+  max-height: 9999px;
+  padding: 12px 0;
+}
+
+/* Splash art image */
+.splash-container img {
+  width: 100px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
