@@ -25,16 +25,31 @@ const heroList = {
   540: "Bright", 541: "Bonnie", 542: "Tachi", 543: "Aya", 544: "Yan", 545: "Yue", 546: "Teeri", 548: "Bijan",
   563: "Heino", 567: "Erin", 568: "Ming", 596: "Goverra", 597: "Biron", 598: "Bolt Baron", 599: "Billow"
 };
-
 function checkImageExists(url) {
+  const cacheKey = 'image_exists_' + url;
+  const cached = localStorage.getItem(cacheKey);
+  if (cached !== null) {
+    const data = JSON.parse(cached);
+    const maxAge = 1000 * 60 * 60 * 24 * 365;
+    if (Date.now() - data.timestamp < maxAge) {
+      return Promise.resolve(data.exists);
+    } else {
+      localStorage.removeItem(cacheKey);
+    }
+  }
   return new Promise(resolve => {
     const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
+    img.onload = () => {
+      localStorage.setItem(cacheKey, JSON.stringify({ exists: true, timestamp: Date.now() }));
+      resolve(true);
+    };
+    img.onerror = () => {
+      localStorage.setItem(cacheKey, JSON.stringify({ exists: false, timestamp: Date.now() }));
+      resolve(false);
+    };
     img.src = url;
   });
 }
-
 async function showHeroImages(heroId, splashDiv, card) {
   const isActive = card.classList.contains('active');
   document.querySelectorAll('.dat2-item').forEach(el => {
