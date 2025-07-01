@@ -78,7 +78,7 @@ async function showHeroImages(heroId, splashDiv, card) {
       let labelUrl = `https://dl.ops.kgvn.garenanow.com/hok/SkinLabel/${fullId}.png`;
       let labelExists = await checkImageExists(labelUrl);
       if (!labelExists) {
-        labelUrl = `https://dl.ops.kgtw.garenanow.com/hok/SkinLabel/${fullId}.png`;
+        labelUrl = `https://dl.ops.kgvn.garenanow.com/hok/SkinLabel/${fullId}.jpg`;
         labelExists = await checkImageExists(labelUrl);
       }
       if (labelExists) {
