@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const qualityToggle = document.getElementById("reduceQualityToggle");
+
   if (localStorage.getItem("reduceQuality") === "enabled") {
     qualityToggle.checked = true;
     applyImageCompression(true);
@@ -10,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     applyImageCompression(shouldReduce);
   });
   function applyImageCompression(shouldReduce) {
-    const images = document.querySelectorAll(".mod-card img");
+    const selector = ".mod-card img, .dat2-item img.thumb, .splash-container img:not(.splash-label)";
+    const images = document.querySelectorAll(selector);
     images.forEach(img => {
       if (shouldReduce) {
         if (!img.dataset.originalSrc) {
