@@ -6,6 +6,7 @@ const ID_RANGES = [
   { start: 105, end: 206 },
   { start: 501, end: 650 }
 ];
+
 function checkImageExists(url) {
   const cacheKey = 'image_exists_' + url;
   const cached = localStorage.getItem(cacheKey);
@@ -31,6 +32,7 @@ function checkImageExists(url) {
     img.src = url;
   });
 }
+
 async function showHeroImages(heroId, splashDiv, card) {
   const isActive = card.classList.contains('active');
   document.querySelectorAll('.dat2-item').forEach(el => {
@@ -57,13 +59,16 @@ async function showHeroImages(heroId, splashDiv, card) {
       const wrapper = document.createElement('div');
       wrapper.style.position = 'relative';
       wrapper.style.marginTop = '8px';
+      
       const img = document.createElement('img');
       img.src = bigUrl;
       img.alt = `${fullId}`;
       img.style.width = '100%';
       img.style.borderRadius = '12px';
+      
       const idTag = document.createElement('div');
-      idTag.textContent = `${fullId}`;
+      const idName = (typeof skinData !== 'undefined' && skinData[fullId]) ? `${fullId}: ${skinData[fullId]}` : fullId;
+      idTag.textContent = idName;
       idTag.style.position = 'absolute';
       idTag.style.top = '8px';
       idTag.style.left = '8px';
@@ -75,6 +80,7 @@ async function showHeroImages(heroId, splashDiv, card) {
       idTag.style.pointerEvents = 'none';
       idTag.classList.add('splash-id');
       idTag.style.display = showSplashId ? 'block' : 'none';
+      
       let labelUrl = `https://dl.ops.kgvn.garenanow.com/hok/SkinLabel/${fullId}.png`;
       let labelExists = await checkImageExists(labelUrl);
       if (!labelExists) {
@@ -104,6 +110,7 @@ async function showHeroImages(heroId, splashDiv, card) {
         labelImg.classList.add('splash-label');
         wrapper.appendChild(labelImg);
       }
+      
       wrapper.appendChild(img);
       wrapper.appendChild(idTag);
       splashDiv.appendChild(wrapper);
@@ -113,6 +120,7 @@ async function showHeroImages(heroId, splashDiv, card) {
     splashDiv.innerHTML = '<small style="color: red;">Không tìm thấy splash art.</small>';
   }
 }
+
 async function loadHeroHeads() {
   const allIDs = [];
   for (const range of ID_RANGES) {
@@ -129,21 +137,26 @@ async function loadHeroHeads() {
       const card = document.createElement('div');
       card.className = 'dat2-item';
       card.dataset.name = (heroList[heroId] || "").toLowerCase();
+      
       const header = document.createElement('div');
       header.className = 'dat2-header';
+      
       const img = document.createElement('img');
       img.src = headUrl;
       img.className = 'thumb';
       img.alt = `${heroId}`;
+      
       const textDiv = document.createElement('div');
       textDiv.className = 'text';
+      
       const nameEl = document.createElement('strong');
       nameEl.textContent = heroList[heroId] || `ID ${heroId}`;
+      
       const small = document.createElement('small');
       small.textContent = 'Click để xem splash art';
+      
       textDiv.appendChild(nameEl);
       textDiv.appendChild(small);
-      
       header.appendChild(img);
       header.appendChild(textDiv);
       
@@ -161,6 +174,7 @@ async function loadHeroHeads() {
     }
   }
 }
+
 searchInput.addEventListener('input', () => {
   const keyword = searchInput.value.trim().toLowerCase();
   const cards = document.querySelectorAll('.dat2-item');
@@ -177,10 +191,11 @@ searchInput.addEventListener('input', () => {
     card.style.display = match ? 'flex' : 'none';
   });
 });
-loadHeroHeads();
+
 document.addEventListener("DOMContentLoaded", () => {
   const showIdToggle = document.getElementById("toggle-show-id");
   const showLabelToggle = document.getElementById("toggle-show-label");
+  
   if (showIdToggle) {
     showIdToggle.checked = showSplashId;
     updateHeroNames(showSplashId);
@@ -192,16 +207,17 @@ document.addEventListener("DOMContentLoaded", () => {
       updateSplashIdVisibility(showSplashId);
     });
   }
+  
   if (showLabelToggle) {
     showLabelToggle.checked = showSplashLabel;
     updateSplashLabelVisibility(showSplashLabel);
-    
     showLabelToggle.addEventListener("change", () => {
       showSplashLabel = showLabelToggle.checked;
       localStorage.setItem('showSplashLabel', showSplashLabel);
       updateSplashLabelVisibility(showSplashLabel);
     });
   }
+  
   function updateHeroNames(showId) {
     document.querySelectorAll(".dat2-item").forEach(card => {
       const img = card.querySelector("img.thumb");
@@ -212,22 +228,28 @@ document.addEventListener("DOMContentLoaded", () => {
       nameEl.textContent = showId ? `${heroId}: ${name}` : name;
     });
   }
+  
   function updateSplashIdVisibility(showId) {
     document.querySelectorAll(".splash-id").forEach(idTag => {
       idTag.style.display = showId ? 'block' : 'none';
     });
   }
+  
   function updateSplashLabelVisibility(showLabel) {
     document.querySelectorAll(".splash-label").forEach(label => {
       label.style.display = showLabel ? 'block' : 'none';
     });
   }
+  
   updateHeroNames(showSplashId);
   updateSplashIdVisibility(showSplashId);
   updateSplashLabelVisibility(showSplashLabel);
 });
+
+// Splash container toggle
 const splashButton = document.getElementById('open-splash');
 const splashContainer = document.getElementById('splash-container');
+
 splashButton.addEventListener('click', function(event) {
   event.stopPropagation();
   if (splashContainer.classList.contains('hidden')) {
@@ -253,9 +275,11 @@ splashButton.addEventListener('click', function(event) {
     }, 300);
   }
 });
+
 splashContainer.addEventListener('click', function(event) {
   event.stopPropagation();
 });
+
 document.addEventListener('click', function() {
   if (!splashContainer.classList.contains('hidden')) {
     splashContainer.style.height = splashContainer.scrollHeight + "px";
@@ -268,3 +292,6 @@ document.addEventListener('click', function() {
     }, 300);
   }
 });
+
+// Cuối cùng, KHÔNG quên gọi sau khi skinData đã tồn tại
+loadHeroHeads();
