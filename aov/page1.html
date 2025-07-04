@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="darkmode.css">
   <link rel="stylesheet" href="splash.css">
   <link rel="stylesheet" href="skinlist.css">
+  <link rel="stylesheet" href="xapk.css">
   <link rel="stylesheet" href="settingsanimation.css">
   <link rel="icon" type="image/png" href="icons/daticon.png">
 </head>
@@ -72,14 +73,14 @@
     <div class="menu-item">
       <img src="icons/mb.png" alt="donate" class="icon-img">
       <div class="text">
-        <strong>DONATE</strong><br>
+        <strong>DONATE</strong>
         <small>Donate cho admin để ra mod nhanh hơn🐧</small>
       </div>
     </div>
     <div class="menu-item" id="chonmod">
     <img src="icons/chonmod.png" alt="donate" class="icon-img">
     <div class="text">
-      <strong>CHỌN MOD</strong><br>
+      <strong>CHỌN MOD</strong>
       <small>Click để lựa chọn một bản mod</small><div id="skin-list"></div>
       </div>
     </div>
@@ -87,8 +88,8 @@
       <img src="icons/caimod.png" alt="YouTube" class="icon-img">
       <div class="text">
         <a href="https://youtube.com/shorts/FmzHEbxIMC0" target="_blank">
-          <strong>HƯỚNG DẪN CÀI MOD [iOS]</strong><br>
-          <small>Click để xem hướng dẫn cài mod iOS<br></small>
+          <strong>HƯỚNG DẪN CÀI MOD [iOS]</strong>
+          <small>Click để xem hướng dẫn cài mod iOS</small>
         </a>
       </div>
     </div>
@@ -96,7 +97,7 @@
       <img src="icons/caimod.png" alt="huongdan" class="icon-img">
       <div class="text">
         <a href="video/caimod.mp4" target="_blank">
-        <strong>HƯỚNG DẪN CÀI MOD [Android]</strong><br>
+        <strong>HƯỚNG DẪN CÀI MOD [Android]</strong>
         <small>Click để xem hướng dẫn cài mod Android</small></a>
       </div>
     </div>
@@ -104,7 +105,7 @@
       <img src="icons/xoamod.png" alt="huongdan" class="icon-img">
       <div class="text">
         <a href="video/xoamod.mp4" target="_blank">
-        <strong>HƯỚNG DẪN XOÁ MOD [Android]</strong><br>
+        <strong>HƯỚNG DẪN XOÁ MOD [Android]</strong>
         <small>Click để xem hướng dẫn xoá mod Android</small></a>
       </div>
     </div>
@@ -112,7 +113,7 @@
       <img src="icons/huongdan.png" alt="huongdan" class="icon-img">
       <div class="text">
         <a href="video/fixadr11.mp4" target="_blank">
-        <strong>HƯỚNG DẪN FIX ANDROID ≥11</strong><br>
+        <strong>HƯỚNG DẪN FIX ANDROID ≥11</strong>
         <small>Click để xem hướng dẫn fix thao tác hoàn thành với lỗi</small></a>
       </div>
     </div>
@@ -120,27 +121,100 @@
       <img src="icons/res.png" alt="res" class="icon-img">
       <div class="text">
         <a href="https://drive.google.com/uc?export=download&id=1_XTbzLR3PkDe7aaYV3sAG6qiSoJi3Hyu" target="_blank">
-        <strong>RESOURCES MỚI [Android]</strong><br>
+        <strong>RESOURCES MỚI [Android]</strong>
         <small>Click để tải resources Android mới nhất</small></a>
       </div>
     </div>
     <div class="menu-item" id="open-splash">
       <img src="icons/image.png" alt="res" class="icon-img">
       <div class="text">
-        <strong>THƯ VIỆN SPLASH ART AOV</strong><br>
+        <strong>THƯ VIỆN SPLASH ART AOV</strong>
         <small>Click để xem splash art tướng</small>
+        <div id="splash-container" class="hidden">
+          <input id="search" placeholder="🔎 Tìm kiếm bằng id hoặc tên..." />
+          <div class="dat2" id="head-grid"></div>
+        </div>
       </div>
     </div>
-    <div id="splash-container" class="hidden">
-      <input id="search" placeholder="🔎 Tìm kiếm bằng id hoặc tên..." />
-      <div class="dat2" id="head-grid"></div>
+    <div class="menu-item" id="open-server-list">
+      <img src="icons/aov.png" alt="res" class="icon-img">
+      <div class="text">
+        <strong>DANH SÁCH MÁY CHỦ AOV</strong>
+        <small>Click để xem hoặc tải APK/XAPK</small>
+        <div class="menu3-list">
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qsw2kfcvjqMPhkjOguf8Snrhl7XnoaPC">
+          <img src="appicon/Z.webp" class="icon-img2">
+          <div class="text">
+              <strong>LIÊN QUÂN MOBILE [VN]</strong>
+              <small>com.garena.game.kgvn</small>
+              <div class="label-top-right">1.58.1.2 | XAPK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qtIX8Os7MmqvQQtr5DGYNEeyS3FXYj48">
+          <img src="appicon/GL.webp" class="icon-img2">
+          <div class="text">
+              <strong>ARENA OF VALOR [GL]</strong>
+              <small>com.ngame.allstar.eu</small>
+              <div class="label-top-right">1.58.1.2 | XAPK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qiyhRDMCCsweJ9hUxcDGA3d4RNIaz9EE">
+          <img src="appicon/TH.webp" class="icon-img2">
+          <div class="text">
+              <strong>REALM OF VALOR [TH]</strong>
+              <small>com.garena.game.kgth</small>
+              <div class="label-top-right">1.58.1.7 | XAPK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qjyOCRN3lMyAG0KHeivOTwT01VYRTjg_">
+          <img src="appicon/Z.webp" class="icon-img2">
+          <div class="text">
+              <strong>傳說對決 [TW]</strong>
+              <small>com.garena.game.kgtw</small>
+              <div class="label-top-right">1.59.1.1 | XAPK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qyFH_LJ61gsbzrn0JqjeVA2Y_hxQTQL7">
+          <img src="appicon/CN.webp" class="icon-img2">
+          <div class="text">
+              <strong>先行服 [CN]</strong>
+              <small>com.tencent.ngame.chty</small>
+              <div class="label-top-right">1.58.5.1 | APK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1q0vR8ofZOzgNubMh4tZ4euAYC3fgiM7T">
+          <img src="appicon/JP.webp" class="icon-img2">
+          <div class="text">
+              <strong>アリーナ・オブ・ヴァラー [JP]</strong>
+              <small>com.tencent.ngjp</small>
+              <div class="label-top-right">1.58.1.2 | XAPK</div>
+          </div>
+        </div>
+        <div class="menu3-item" data-link="https://drive.google.com/uc?export=download&id=1qWVLnuzvFdVENNlrSpvkKzPDcGVdy8bu">
+          <img src="appicon/ID.webp" class="icon-img2">
+          <div class="text">
+              <strong>ARENA OF VALOR [ID]</strong>
+              <small>com.garena.game.kgid</small>
+              <div class="label-top-right">1.59.1.3 |</div>
+          </div>
+        </div>
+        <div class="menu3-item">
+          <img src="appicon/KR.webp" class="icon-img2">
+          <div class="text">
+            <strong>펜타스톰 [KR]</strong>
+            <small>com.netmarble.pentastorm</small>
+            <div class="label-top-right">Ngừng phát hành</div>
+          </div>
+        </div>
+        </div>
       </div>
+    </div>
     <div class="menu-item">
       <img src="icons/nmm.png" alt="YouTube" class="icon-img">
       <div class="text">
         <a href="https://play.google.com/store/apps/details?id=in.mfile" target="_blank">
-          <strong>APP NMM - HỖ TRỢ CÀI FILE</strong><br>
-          <small>Click để tải app NMM<br></small>
+          <strong>APP NMM - HỖ TRỢ CÀI FILE</strong>
+          <small>Click để tải app NMM</small>
         </a>
       </div>
     </div>
@@ -148,8 +222,8 @@
       <img src="icons/ytb.png" alt="YouTube" class="icon-img">
       <div class="text">
         <a href="https://youtube.com/@datallain07" target="_blank">
-          <strong>YOUTUBE ĐẠT ALLAIN</strong><br>
-          <small>Click để đến kênh Youtube Đạt Allain<br></small>
+          <strong>YOUTUBE ĐẠT ALLAIN</strong>
+          <small>Click để đến kênh Youtube Đạt Allain</small>
         </a>
       </div>
     </div>
@@ -157,8 +231,8 @@
       <img src="icons/tik.png" alt="YouTube" class="icon-img">
       <div class="text">
         <a href="https://tiktok.com/@datallain07" target="_blank">
-          <strong>TIKTOK ĐẠT ALLAIN</strong><br>
-          <small>Click để đến kênh TikTok Đạt Allain<br></small>
+          <strong>TIKTOK ĐẠT ALLAIN</strong>
+          <small>Click để đến kênh TikTok Đạt Allain</small>
         </a>
       </div>
     </div>
@@ -166,8 +240,8 @@
       <img src="icons/congdong.png" alt="YouTube" class="icon-img">
       <div class="text">
         <a href="https://zalo.me/g/pbnmeo492" target="_blank">
-          <strong>CỘNG ĐỒNG ĐẠT ALLAIN</strong><br>
-          <small>Click để đến cộng đồng Đạt Allain<br></small>
+          <strong>CỘNG ĐỒNG ĐẠT ALLAIN</strong>
+          <small>Click để đến cộng đồng Đạt Allain</small>
         </a>
       </div>
     </div>
@@ -189,6 +263,7 @@
 </div>
 <div class="credit">©datallain07 | Đạt Allain 16:06 27thg6 25</div>
 <script src="skins.js"></script>
+<script src="xapk.js"></script>
 <script src="skinname.js"></script>
 <script src="herolist.js"></script>
 <script src="script.js"></script>

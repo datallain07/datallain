@@ -3,6 +3,7 @@ body.dark-mode .app-header,
 body.dark-mode header,
 body.dark-mode .menu-item,
 body.dark-mode .menu2-item,
+body.dark-mode .menu3-item,
 body.dark-mode .popup-content,
 body.dark-mode .side-menu,
 body.dark-mode .donate-content,
@@ -12,6 +13,7 @@ body.dark-mode .menu {
   color: #eee !important;
   border-color: rgba(255,255,255,0.2) !important;
 }
+body.dark-mode .label-top-right,
 body.dark-mode .popup-title,
 body.dark-mode .popup-message,
 body.dark-mode .donate-message,
