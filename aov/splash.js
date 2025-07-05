@@ -292,6 +292,4 @@ document.addEventListener('click', function() {
     }, 300);
   }
 });
-
-// Cuối cùng, KHÔNG quên gọi sau khi skinData đã tồn tại
 loadHeroHeads();

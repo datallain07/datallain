@@ -1,8 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   const chonMod = document.getElementById("chonmod");
   const skinList = document.getElementById("skin-list");
+  const sideMenu = document.getElementById("side-menu");
+  const overlay = document.getElementById("overlay");
   let isOpen = false;
-  chonMod.addEventListener("click", function (event) {
+  chonMod.addEventListener("click", function(event) {
     event.preventDefault();
     event.stopPropagation();
     if (isOpen) return;
@@ -15,21 +17,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     isOpen = true;
   });
-  document.addEventListener("click", function (event) {
+  document.addEventListener("click", function(event) {
     const target = event.target;
-    if (!skinList.contains(target) && target !== chonMod) {
-      if (isOpen) {
-        skinList.style.height = skinList.scrollHeight + "px";
-        requestAnimationFrame(() => {
-          skinList.style.height = "0px";
-          skinList.classList.add("collapsed");
-          skinList.classList.remove("expanded");
-        });
-        isOpen = false;
-      }
+    const isOutsideSkinList = !skinList.contains(target);
+    const isInsideSideMenu = target.closest('#side-menu') !== null;
+    const isInsideHeader = target.closest('header') !== null;
+    const isInsideOverlay = target.closest('#overlay') !== null;
+    
+    if (
+      isOpen &&
+      isOutsideSkinList &&
+      !isInsideSideMenu &&
+      !isInsideHeader &&
+      !isInsideOverlay
+    ) {
+      skinList.style.height = skinList.scrollHeight + "px";
+      requestAnimationFrame(() => {
+        skinList.style.height = "0px";
+        skinList.classList.add("collapsed");
+        skinList.classList.remove("expanded");
+      });
+      isOpen = false;
     }
   });
-  skinList.addEventListener("click", function (event) {
+  skinList.addEventListener("click", function(event) {
     event.stopPropagation();
   });
 });
@@ -54,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       canClose = true;
       closeBtn.disabled = false;
-      closeBtn.textContent = ""
+      closeBtn.textContent = "";
       closeBtn.style.opacity = "1";
       closeBtn.style.pointerEvents = "auto";
     }, 0);
@@ -62,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function() {
     closeBtn.textContent = "";
     closeBtn.style.opacity = "0.5";
     closeBtn.style.pointerEvents = "none";
-    
   }, 100);
   function closePopup() {
     if (!canClose) return;
@@ -88,7 +98,7 @@ window.addEventListener('keydown', function(e) {
     e.preventDefault();
   }
 });
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const donateItem = document.querySelector('.menu-item:nth-child(1)');
   const donatePopup = document.getElementById('donate-popup');
   donateItem.addEventListener('click', () => {
@@ -124,7 +134,7 @@ function startRGBGlow(element) {
     const color = getRGBColor(time);
     element.style.setProperty('--rgb-color', color);
     time++;
-  }, 50); 
+  }, 50);
   return () => {
     clearInterval(interval);
     element.classList.remove('rgb-glow');
@@ -140,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".menu-item").forEach(item => {
     item.addEventListener("click", e => {
