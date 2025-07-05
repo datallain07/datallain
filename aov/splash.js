@@ -245,8 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateSplashIdVisibility(showSplashId);
   updateSplashLabelVisibility(showSplashLabel);
 });
-
-// Splash container toggle
 const splashButton = document.getElementById('open-splash');
 const splashContainer = document.getElementById('splash-container');
 
