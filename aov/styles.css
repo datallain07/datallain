@@ -344,10 +344,20 @@ input:checked + .slider::before {
   margin-bottom: 5px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
+.menusettings-item .text {
+  flex: 1;
+}
 .menusettings-item .text strong {
   font-size: 16px;
+  display: block;
+  width: 100%;
 }
 .menusettings-item .text small {
   color: #666;
   font-size: 13px;
+}
+.menu-item .text:not(:has(small)) {
+  display: flex;
+  align-items: center;
+  min-height: 20px;
 }
