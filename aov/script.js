@@ -58,25 +58,45 @@ overlay.addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", function() {
   const popup = document.getElementById("welcome-popup");
   const closeBtn = document.getElementById("close-popup");
+  const dontShowAgain = document.getElementById("dont-show-again");
   let canClose = false;
+  const dontShow = localStorage.getItem("dontShowWelcomePopup");
+  if (dontShow === "true") return;
   setTimeout(() => {
     localStorage.setItem("hasVisitedBefore", "true");
-    popup.classList.add("show");
-    setTimeout(() => {
-      canClose = true;
-      closeBtn.disabled = false;
-      closeBtn.textContent = "";
-      closeBtn.style.opacity = "1";
-      closeBtn.style.pointerEvents = "auto";
-    }, 0);
+    popup.style.display = "flex";
+    requestAnimationFrame(() => {
+      popup.classList.add("show");
+      popup.style.opacity = "1";
+    });
+    let countdown = 10;
+    closeBtn.textContent = `Có thể đóng sau ${countdown}s`;
     closeBtn.disabled = true;
-    closeBtn.textContent = "";
     closeBtn.style.opacity = "0.5";
     closeBtn.style.pointerEvents = "none";
+    closeBtn.style.cursor = "not-allowed";
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      if (countdown > 0) {
+        closeBtn.textContent = `Có thể đóng sau ${countdown}s`;
+      } else {
+        clearInterval(countdownInterval);
+        canClose = true;
+        closeBtn.disabled = false;
+        closeBtn.textContent = "";
+        closeBtn.style.opacity = "1";
+        closeBtn.style.pointerEvents = "auto";
+        closeBtn.style.cursor = "pointer";
+      }
+    }, 1000);
   }, 100);
   function closePopup() {
     if (!canClose) return;
+    if (dontShowAgain && dontShowAgain.checked) {
+      localStorage.setItem("dontShowWelcomePopup", "true");
+    }
     popup.classList.remove("show");
+    popup.style.opacity = "0";
   }
   popup.addEventListener("transitionend", function(e) {
     if (e.propertyName === "opacity" && !popup.classList.contains("show")) {
