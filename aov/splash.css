@@ -71,15 +71,15 @@
   padding: 0 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
   justify-content: flex-start;
 }
 .dat2-item.active .splash-container {
   max-height: 9999px;
-  padding: 12px 0;
+  padding: 1px 0;
 }
 .splash-container img {
-  width: 100px;
+  max-width: 99%;
+  width: 110px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }

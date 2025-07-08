@@ -35,7 +35,6 @@ body.dark-mode .dat2-item .text small {
 }
 body.dark-mode .splash-container img {
   border-color: rgba(255, 255, 255, 0.2) !important;
-  background-color: #111 !important;
 }
 body.dark-mode .splash-container {
   background-color: transparent; 
