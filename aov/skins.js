@@ -1,6 +1,18 @@
 const skins = [
 {
 champion: "Allain",
+name: "Firefly",
+downloadLinkIOS: "https://link4m.com/3Rfs8iBP",
+downloadLinkAndroid: "https://link4m.com/KoWHWeu8",
+bgImg: "img/firefly.png",
+miniImg: "img/firefly_mini.png",
+label: "Mới",
+desc: "Effects - Sound - Button",
+textColor: "rgb(0, 225, 160)",
+borderColor: "rgba(0, 225, 160, 0.5)",
+},
+{
+champion: "Allain",
 name: "Hắc Kiếm Sĩ Kirito",
 downloadLinkIOS: "https://link4m.com/lbGyd",
 downloadLinkAndroid: "https://link4m.com/lbGyd",
