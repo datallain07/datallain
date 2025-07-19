@@ -1,5 +1,17 @@
 const skins = [
 {
+champion: "Butterfly",
+name: "Castorice",
+downloadLinkIOS: "https://link4m.com/Actc6",
+downloadLinkAndroid: "https://link4m.com/ibMoLj",
+bgImg: "img/castorice.png",
+miniImg: "img/castorice_mini.png",
+label: "Mới",
+desc: "Effects - Sound - Button",
+textColor: "rgb(200, 111, 255)",
+borderColor: "rgba(200, 111, 255, 0.5)",
+},
+{
 champion: "Allain",
 name: "Firefly",
 downloadLinkIOS: "https://link4m.com/3Rfs8iBP",
