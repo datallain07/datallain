@@ -1,38 +1,43 @@
 const skinList = document.getElementById("skin-list");
-    skins.forEach((skin) => {
-      const labelHTML = skin.label
-        ? `<span class="label" style="background-color: ${skin.textColor}">${skin.label}</span>`
-        : "";
-      const miniImgHTML = skin.miniImg
-        ? `<img src="${skin.miniImg}" class="mod-mini" style="border-color: ${skin.borderColor}" />`
-        : "";
-      const championNoteHTML = skin.champion && skin.miniImg
-        ? `<div class="mod-champion-note">${skin.champion}</div>`
-        : "";
-      const titleHTML = skin.name
-        ? `<div class="mod-title" style="background: linear-gradient(to bottom, #fff, ${skin.textColor}); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">${skin.name}</div>`
-        : "";
-      const descHTML = skin.desc ? `<div class="mod-desc">${skin.desc}</div>` : "";
-      const downloadBtnHTML = skin.downloadLinkIOS && skin.downloadLinkAndroid
-        ? `<div class="download-container"><div class="download-btn-main" style="background: ${skin.textColor};color: black;" onclick="toggleDownloadOptions(this, '${skin.downloadLinkAndroid}', '${skin.downloadLinkIOS}', '${skin.textColor}')">Tải xuống</div></div>`
-        : "";
-      const cardHTML = `
-        <div class="mod-card" style="border-color: ${skin.borderColor};color: ${skin.textColor}" onclick="changeBg('${skin.bgImg}')">
-          ${labelHTML}
-          <img src="${skin.bgImg}" class="bg" />
-          <div class="mod-info">
-            ${miniImgHTML}
-            <div class="mod-texts" style="color: ${skin.textColor}">
-              ${championNoteHTML}
-              ${titleHTML}
-              ${descHTML}
-            </div>
-          </div>
-          ${downloadBtnHTML}
+skins.forEach((skin) => {
+  const rgb = skin.color;
+  const textColor = `rgb(${rgb})`;
+  const borderColor = `rgba(${rgb}, 0.5)`;
+  
+  const labelHTML = skin.label ?
+    `<span class="label" style="background-color: ${textColor}">${skin.label}</span>` :
+    "";
+  const miniImgHTML = skin.miniImg ?
+    `<img src="${skin.miniImg}" class="mod-mini" style="border-color: ${borderColor}" />` :
+    "";
+  const championNoteHTML = skin.champion && skin.miniImg ?
+    `<div class="mod-champion-note">${skin.champion}</div>` :
+    "";
+  const titleHTML = skin.name ?
+    `<div class="mod-title" style="background: linear-gradient(to bottom, #fff, ${textColor}); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">${skin.name}</div>` :
+    "";
+  const descHTML = skin.desc ? `<div class="mod-desc">${skin.desc}</div>` : "";
+  const downloadBtnHTML = skin.IOS && skin.Android ?
+    `<div class="download-container"><div class="download-btn-main" style="background: ${textColor};color: black;" onclick="toggleDownloadOptions(this, '${skin.Android}', '${skin.IOS}', '${textColor}')">Tải xuống</div></div>` :
+    "";
+  
+  const cardHTML = `
+    <div class="mod-card" style="border-color: ${borderColor};color: ${textColor}" onclick="changeBg('${skin.bgImg}')">
+      ${labelHTML}
+      <img src="${skin.bgImg}" class="bg" />
+      <div class="mod-info">
+        ${miniImgHTML}
+        <div class="mod-texts" style="color: ${textColor}">
+          ${championNoteHTML}
+          ${titleHTML}
+          ${descHTML}
         </div>
-      `;
-      skinList.insertAdjacentHTML("beforeend", cardHTML);
-    });
+      </div>
+      ${downloadBtnHTML}
+    </div>
+  `;
+  skinList.insertAdjacentHTML("beforeend", cardHTML);
+});
 document.querySelectorAll('.mod-card').forEach(function(card) {
   card.addEventListener('click', function() {
 
