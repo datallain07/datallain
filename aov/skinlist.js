@@ -33,19 +33,23 @@ const skinList = document.getElementById("skin-list");
       `;
       skinList.insertAdjacentHTML("beforeend", cardHTML);
     });
-  document.querySelectorAll('.mod-card').forEach(function(card) {
+document.querySelectorAll('.mod-card').forEach(function(card) {
   card.addEventListener('click', function() {
+
+    if (document.body.classList.contains('no-animation')) return;
+    
     const isExpanded = card.classList.contains('expand');
     if (isExpanded) return;
+    
     document.querySelectorAll('.mod-card.expand').forEach(function(c) {
       collapseCard(c);
       c.classList.remove('expand');
     });
+    
     expandCard(card);
     card.classList.add('expand');
   });
-});
-function expandCard(card) {
+});function expandCard(card) {
   const startHeight = card.offsetHeight;
   card.style.height = startHeight + 'px';
   card.classList.add('expand');
