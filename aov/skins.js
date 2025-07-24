@@ -2,8 +2,8 @@ const skins = [
 {
 champion: "Butterfly",
 name: "Castorice",
-IOS: "https://link4m.com/HNuFcrPB",
-Android: "https://link4m.com/bGw6Js",
+IOS: "https://link4m.com/1lKm5h0",
+Android: "https://link4m.com/SnpXCAT",
 bgImg: "img/castorice.png",
 miniImg: "img/castorice_mini.png",
 label: "Mới",
