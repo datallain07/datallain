@@ -1,5 +1,16 @@
 const skins = [
 {
+champion: "Allain",
+name: "Firefly",
+IOS: "https://link4m.com/zo0y0",
+Android: "https://link4m.com/mgC7yVib",
+bgImg: "img/firefly.png",
+miniImg: "img/firefly_mini.png",
+label: "Mới",
+desc: "Effects - Sound - Button",
+color: "0, 255, 180",
+},
+{
 champion: "Thorne",
 name: "Thứ Nguyên Vệ Thần",
 IOS: "https://link4m.com/hCS9pdPc",
