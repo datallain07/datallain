@@ -1,3 +1,4 @@
+localStorage.removeItem("dontShowWelcomePopup");
 document.addEventListener("DOMContentLoaded", function() {
   const chonMod = document.getElementById("chonmod");
   const skinList = document.getElementById("skin-list");
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
       popup.classList.add("show");
       popup.style.opacity = "1";
     });
-    let countdown = 10;
+    let countdown = 0;
     closeBtn.textContent = `Có thể đóng sau ${countdown}s`;
     closeBtn.disabled = true;
     closeBtn.style.opacity = "0.5";
