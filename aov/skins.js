@@ -1,5 +1,16 @@
 const skins = [
 {
+champion: "Tel'Annas",
+name: "Thứ Nguyên Vệ Thần",
+IOS: "https://link4m.com/Ip1ydAGZ",
+Android: "https://link4m.com/d5OZX0YD",
+bgImg: "img/50108.jpg",
+miniImg: "img/50108head.jpg",
+label: "Mới",
+desc: "Effects - Sound - Button",
+color: "200, 150, 255",
+},
+{
 champion: "Florentino",
 name: "Furina",
 IOS: "https://link4m.com/NSrTRy",
