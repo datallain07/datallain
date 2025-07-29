@@ -1,5 +1,16 @@
 const skins = [
 {
+champion: "Mina",
+name: "Arlecchino",
+IOS: "https://link4m.com/E6BksS",
+Android: "https://link4m.com/pzQHh3H",
+bgImg: "img/arlecchino.png",
+miniImg: "img/arlecchino_mini.png",
+label: "Mới",
+desc: "Effects - Sound - Button",
+color: "255, 70, 70",
+},
+{
 champion: "Wiro",
 name: "Mặc định",
 IOS: "https://link4m.com/HP8hrEE",
