@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
     requestAnimationFrame(() => {
       popup.classList.add("show");
       popup.style.opacity = "1";
-    });
-    let countdown = 1;
+    }); 
+    let countdown = 3;
     closeBtn.textContent = `Có thể đóng sau ${countdown}s`;
     closeBtn.disabled = true;
     closeBtn.style.opacity = "0.5";
