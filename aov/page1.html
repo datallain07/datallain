@@ -245,7 +245,7 @@
     
   </div>
 </div>
-<div class="credit">©datallain07 | Cập nhật lần cuối: 15:56 6thg8 25</div>
+<div class="credit">©datallain07 | Ver1.0</div>
 <script>
 const skins = [
 {
@@ -380,6 +380,19 @@ color: "255, 200, 50",
 <script src="skinlist.js"></script>
 <script src="lowquality.js"></script>
 <script src="settingsanimation.js"></script>
-<script src="reload.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(() => {
+    console.log('Service Worker đã kích hoạt');
+  });
+
+  navigator.serviceWorker.addEventListener('message', event => {
+    if (event.data?.type === 'NEW_HTML_VERSION') {
+      console.log('Trang web có bản cập nhật mới, vui lòng tải lại trang');
+      window.location.reload();
+    }
+  });
+}
+</script>
 </body>
 </html>
