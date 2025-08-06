@@ -245,7 +245,7 @@
     
   </div>
 </div>
-<div class="credit">©datallain07 | Ver1.0.2</div>
+<div class="credit">©datallain07 | Ver1.0.4</div>
 <script>
 const skins = [
 {
@@ -380,25 +380,5 @@ color: "255, 200, 50",
 <script src="skinlist.js"></script>
 <script src="lowquality.js"></script>
 <script src="settingsanimation.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const creditEl = document.querySelector(".credit");
-  if (!creditEl) return;
-  const currentVersion = creditEl.textContent.trim();
-  fetch(window.location.href, { cache: "no-store" })
-    .then(res => res.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-      const newVersion = doc.querySelector(".credit")?.textContent.trim() || "";
-      if (newVersion && newVersion !== currentVersion) {
-        if (confirm(`Trang đã có phiên bản mới (${newVersion}). Bấm OK để tải lại.`)) {
-          location.reload(true);
-        }
-      }
-    })
-    .catch(err => console.error("Không kiểm tra được phiên bản mới:", err));
-});
-</script>
 </body>
 </html>
